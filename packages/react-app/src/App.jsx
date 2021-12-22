@@ -50,7 +50,7 @@ const { ethers } = require("ethers");
 */
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS.rinkeby; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -549,18 +549,21 @@ function App(props) {
                   tx(writeContracts.Staker.withdraw(address));
                 }}
               >
-                🏧 Withdraw
+                🏧  Withdraw.
               </Button>
+            </div>
+            <div>
+              You can withdraw after every staking round before the stake reaches 1Eth. The deadline resets after every successful stake.
             </div>
 
             <div style={{ padding: 8 }}>
               <Button
                 type={balanceStaked ? "success" : "primary"}
                 onClick={() => {
-                  tx(writeContracts.Staker.stake({ value: ethers.utils.parseEther("0.5") }));
+                  tx(writeContracts.Staker.stake({ value: ethers.utils.parseEther("0.2") }));
                 }}
               >
-                🥩 Stake 0.5 ether!
+                🥩 Stake 0.2 ether!
               </Button>
             </div>
 
